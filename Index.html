@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Happy Birthday, Kenza</title>
+  <meta name="description" content="A private birthday micro-site made with love by (your name)."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+
+  <!-- preload -->
+  <link rel="preload" href="hero.jpg" as="image"/>
+  <link rel="preload" href="fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin/>
+
+  <style>
+    :root{
+      --ff-main: "Inter", system-ui, sans-serif;
+      --clr-bg:#faf7ff;
+      --clr-primary:#d6336c;
+      --clr-secondary:#f8f9fa;
+      --clr-text:#212529;
+      --clr-accent:#ff85a2;
+      --max-width:min(90%, 1100px);
+      --radius:12px;
+      --transition:.35s cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--ff-main);
+      background:var(--clr-bg);
+      color:var(--clr-text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    img,picture,video{display:block;max-width:100%;height:auto}
+    h1,h2,h3{line-height:1.2;font-weight:700;color:var(--clr-primary)}
+    a{color:inherit;text-decoration:none}
+    .btn{
+      cursor:pointer;
+      display:inline-block;
+      padding:.75rem 1.75rem;
+      border-radius:var(--radius);
+      background:var(--clr-primary);
+      color:#fff;
+      font-weight:600;
+      transition:background var(--transition), transform var(--transition);
+    }
+    .btn:hover{background:var(--clr-accent);transform:translateY(-2px)}
+    .container{width:var(--max-width);margin-inline:auto}
+    header{padding:2rem 0;text-align:center}
+    .hero{
+      display:grid;
+      place-items:center;
+      gap:2rem;
+      padding-block:3rem;
+      text-align:center;
+    }
+    .hero img{
+      width:180px;
+      height:180px;
+      object-fit:cover;
+      border-radius:50%;
+      border:4px solid var(--clr-primary);
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+      gap:1rem;
+      padding-block:2rem;
+    }
+    .gallery img{border-radius:var(--radius);transition:transform var(--transition)}
+    .gallery img:hover{transform:scale(1.05)}
+    .section{padding-block:3rem}
+    .section > * + *{margin-top:1rem}
+    footer{padding:2rem 0;text-align:center;font-size:.875rem;color:var(--clr-primary)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Happy Birthday, <span>Kenza</span> 🎂</h1>
+    <p>A private corner of the internet, built for you.</p>
+  </header>
+
+  <section class="hero container">
+    <img src="hero.jpg" alt="Portrait of Kenza">
+    <div>
+      <h2>To my favourite person,</h2>
+      <p>
+        Another 365-day orbit around the sun has passed, and the universe
+        is still luckier for having you in it. I built this page to bottle
+        a few memories and a lot of love—click around and enjoy.
+      </p>
+      <button class="btn" id="surpriseBtn">Open your gift 🎁</button>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h3>Some frames from our timeline</h3>
+    <div class="gallery">
+      <img src="pic1.jpg" loading="lazy" alt="Memory 1">
+      <img src="pic2.jpg" loading="lazy" alt="Memory 2">
+      <img src="pic3.jpg" loading="lazy" alt="Memory 3">
+      <img src="pic4.jpg" loading="lazy" alt="Memory 4">
+    </div>
+  </section>
+
+  <section class="section container">
+    <h3>A short letter</h3>
+    <p>
+      Kenza, your smile rewinds my chaos back to clarity.  
+      Thank you for painting ordinary days in impossible colors.  
+      May this year grant you everything your heart whispers to the stars.
+    </p>
+    <p>
+      Forever your co-pilot,  
+      (your name)
+    </p>
+  </section>
+
+  <footer>
+    Crafted with ❤️ by (your name) — &copy; 2025
+  </footer>
+
+  <script type="module">
+    function fireConfetti(){
+      import('https://cdn.skypack.dev/canvas-confetti')
+        .then(({default:confetti})=> confetti({particleCount:120,spread:90,origin:{y:.6}}));
+    }
+    document.getElementById('surpriseBtn').addEventListener('click',fireConfetti);
+
+    // عداد المشاهدات (اختياري)
+    fetch('https://api.countapi.xyz/hit/kenza-bday/visits')
+      .then(r=>r.json()).then(j=>console.log(`Visitor #${j.value}`));
+  </script>
+</body>
+</html>
